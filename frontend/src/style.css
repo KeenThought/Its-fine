@@ -1,0 +1,123 @@
+:root {
+  --bg: #0f0f0f;
+  --surface: #1a1a1a;
+  --text: #e8e6e3;
+  --muted: #8b8685;
+  --accent: #c9a227;
+  --accent-hover: #ddb83a;
+  --error: #c45c4a;
+  --font: "DM Sans", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.app {
+  width: 100%;
+  max-width: 28rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5rem 0;
+  color: var(--text);
+}
+
+.tagline {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+#ask-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+#question {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+#question::placeholder {
+  color: var(--muted);
+}
+
+#question:focus {
+  border-color: var(--accent);
+}
+
+button[type="submit"] {
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  font-family: inherit;
+  font-weight: 500;
+  color: var(--bg);
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+button[type="submit"]:hover {
+  background: var(--accent-hover);
+}
+
+button[type="submit"]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.result {
+  padding: 1rem 1.25rem;
+  background: var(--surface);
+  border-radius: 8px;
+  border-left: 4px solid var(--accent);
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.result.error {
+  border-left-color: var(--error);
+  color: #e8a89a;
+}
