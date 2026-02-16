@@ -16,7 +16,8 @@ form.addEventListener('submit', async (e: Event) => {
   resultEl.classList.remove('error');
 
   try {
-    const url = `/api/answer?q=${encodeURIComponent(question)}`;
+    const apiBase = import.meta.env.VITE_API_URL ?? '';
+    const url = `${apiBase}/api/answer?q=${encodeURIComponent(question)}`;
     const res = await fetch(url);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = (await res.json()) as AnswerResponse;
