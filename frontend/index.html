@@ -3,32 +3,108 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>It's Fine</title>
+    <meta name="description" content="Oracle of God — daily Scripture, first principles, and the living Word." />
+    <meta name="theme-color" content="#0a0e14" />
+    <title>Oracle of God</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
     <div class="app">
-      <header>
-        <h1>It's Fine</h1>
-        <p class="tagline">Ask anything. The answer is always the same.</p>
+      <header class="site-header">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">☩</div>
+          <div>
+            <h1>Oracle of God</h1>
+            <p class="tagline">The living Word, spoken daily</p>
+          </div>
+        </div>
+        <nav class="nav-tabs" aria-label="Main navigation">
+          <button type="button" class="nav-tab active" data-view="daily">Daily Oracle</button>
+          <button type="button" class="nav-tab" data-view="consult">Consult</button>
+          <button type="button" class="nav-tab" data-view="principles">First Principles</button>
+        </nav>
       </header>
+
       <main>
-        <form id="ask-form" aria-label="Ask a question">
-          <input
-            type="text"
-            id="question"
-            name="q"
-            placeholder="Type your question..."
-            autocomplete="off"
-            required
-          />
-          <button type="submit">Ask</button>
-        </form>
-        <div id="result" class="result" aria-live="polite" hidden></div>
+        <!-- Oracle Animation Stage -->
+        <section class="oracle-stage" aria-label="Oracle visualization">
+          <div class="oracle-glow" aria-hidden="true"></div>
+          <div class="oracle-ring oracle-ring--outer" aria-hidden="true"></div>
+          <div class="oracle-ring oracle-ring--inner" aria-hidden="true"></div>
+          <div class="oracle-flame" id="oracle-flame" aria-hidden="true">
+            <div class="flame-core"></div>
+            <div class="flame-aura"></div>
+          </div>
+          <div class="oracle-scroll" id="oracle-scroll" aria-hidden="true">
+            <div class="scroll-rod scroll-rod--top"></div>
+            <div class="scroll-body">
+              <span class="scroll-symbol">☩</span>
+            </div>
+            <div class="scroll-rod scroll-rod--bottom"></div>
+          </div>
+          <p class="oracle-status" id="oracle-status">The oracle awaits</p>
+        </section>
+
+        <!-- Daily View -->
+        <section class="panel panel--active" id="panel-daily" aria-label="Daily oracle">
+          <div class="journey-badge" id="journey-badge" hidden>
+            First Principle <span id="journey-day">1</span> of <span id="journey-total">6</span>
+          </div>
+          <div class="word-card" id="daily-card" hidden>
+            <p class="word-label">Today's Oracle</p>
+            <blockquote class="word-text" id="daily-text"></blockquote>
+            <cite class="word-ref" id="daily-ref"></cite>
+            <p class="word-reflection" id="daily-reflection"></p>
+            <div class="principle-tag" id="daily-principle"></div>
+          </div>
+          <div class="panel-actions">
+            <button type="button" class="btn btn--primary" id="btn-reveal-daily">Receive Today's Word</button>
+            <button type="button" class="btn btn--ghost" id="btn-share-daily" hidden>Share Oracle</button>
+          </div>
+        </section>
+
+        <!-- Consult View -->
+        <section class="panel" id="panel-consult" aria-label="Consult the oracle" hidden>
+          <form id="consult-form" class="consult-form">
+            <label for="question" class="consult-label">What weighs on your heart?</label>
+            <textarea
+              id="question"
+              name="question"
+              rows="3"
+              placeholder="Speak your question to the oracle..."
+              required
+            ></textarea>
+            <button type="submit" class="btn btn--primary">Consult the Oracle</button>
+          </form>
+          <div class="word-card" id="consult-card" hidden>
+            <p class="word-label">The Oracle Speaks</p>
+            <blockquote class="word-text" id="consult-text"></blockquote>
+            <cite class="word-ref" id="consult-ref"></cite>
+            <p class="word-reflection" id="consult-reflection"></p>
+            <div class="principle-tag" id="consult-principle"></div>
+            <p class="word-closing" id="consult-closing"></p>
+          </div>
+          <div class="panel-actions">
+            <button type="button" class="btn btn--ghost" id="btn-share-consult" hidden>Share Word</button>
+          </div>
+        </section>
+
+        <!-- First Principles View -->
+        <section class="panel" id="panel-principles" aria-label="First principles of the oracles of God" hidden>
+          <div class="principles-intro">
+            <h2>First Principles</h2>
+            <p>From Hebrews 6 — the foundation of the oracles of God. Six truths to build upon as you press on to maturity.</p>
+          </div>
+          <ol class="principles-list" id="principles-list"></ol>
+        </section>
       </main>
+
+      <footer class="site-footer">
+        <p>Hebrews 5:12 — <em>"The first principles of the oracles of God"</em></p>
+      </footer>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>

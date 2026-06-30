@@ -1,27 +1,27 @@
-# It's Fine – C Backend
+# Oracle of God – Backend
 
-HTTP API that responds `{"answer":"it's fine"}` to any question.
+HTTP API serving daily Scripture oracles and first principles (Hebrews 6).
 
-## Dependency
-
-- **macOS**: `brew install libmicrohttpd`
-- **Linux**: install `libmicrohttpd-dev` (e.g. `apt install libmicrohttpd-dev`)
-
-## Build
+## Run (Node.js)
 
 ```bash
-make
-```
-
-## Run
-
-```bash
-./server
+npm start
 ```
 
 Server listens on **http://localhost:8080**.
 
-- `GET /api/answer?q=anything` → `{"answer":"it's fine"}`
-- `OPTIONS /api/answer` → CORS preflight (204)
+## Endpoints
 
-Press Enter in the terminal to stop the server.
+- `GET /api/oracle/daily` — today's oracle
+- `GET /api/oracle/principles` — six first principles
+- `POST /api/oracle/consult` — `{ "question": "..." }`
+- `GET /api/health` — health check
+
+## C backend (optional)
+
+```bash
+make
+./server
+```
+
+The C server provides the legacy `/api/answer` endpoint only. Use Node.js for the full oracle API.
